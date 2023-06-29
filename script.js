@@ -66,6 +66,16 @@ async function loadMobileNetFeatureModel() {
     );
     console.log(answer.shape);
   });
+// Get a reference to the buttons
+let dataCollectorButtons = document.querySelectorAll('.gather');
+
+// Add event listeners to the buttons
+for (let i = 0; i < dataCollectorButtons.length; i++) {
+  dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
+  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
+  // For mobile.
+  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
+};
 }
 
 loadMobileNetFeatureModel();
