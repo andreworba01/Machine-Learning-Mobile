@@ -106,14 +106,13 @@ function enableCam() {
   if (hasGetUserMedia()) {
     // getUsermedia parameters.
     const constraints = {
-        video: {
-          facingMode: 'environment',
-          width: { ideal: window.innerWidth },
-          height: { ideal: window.innerHeight }
-        }
-      };
+      video: true,
+      width: 740,
+      height: 580,
+    };
+
     // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia(constrains).then(function (stream) {
+    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
       VIDEO.srcObject = stream;
       VIDEO.addEventListener("loadeddata", function () {
         videoPlaying = true;
