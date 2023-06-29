@@ -106,27 +106,23 @@ function enableCam() {
   if (hasGetUserMedia()) {
     // getUsermedia parameters.
     const constraints = {
-        video: {
-          facingMode: 'environment',
-          width: { ideal: window.innerWidth },
-          height: { ideal: window.innerHeight }
-        }
-      };
+      video: true,
+      width: 740,
+      height: 580,
+    };
 
     // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia({
-        video: {
-          facingMode: 'user' // Use the front camera
+    navigator.mediaDevices.getUserMedia({video: {
+      facingMode: 'user' // Use the front camera
         }
       }).then(function(stream) {
         var video = document.getElementById('webcam');
         video.srcObject = stream;
       }).catch(function(error) {
-        console.log('Error accessing the camera: ', error);
+      console.log('Error accessing the camera: ', error);
       });
-  } 
-  
-  else {
+    });
+  } else {
     console.warn("getUserMedia() is not supported by your browser");
   }
 }
@@ -134,7 +130,6 @@ function enableCam() {
  * Handle Data Gather for button mouseup/mousedown.
  **/
 function gatherDataForClass() {
-  event.preventDefault();
   let classNumber = parseInt(this.getAttribute('data-1hot'));
   gatherDataState = (gatherDataState === STOP_DATA_GATHER) ? classNumber : STOP_DATA_GATHER;
   dataGatherLoop();
