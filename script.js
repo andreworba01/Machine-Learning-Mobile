@@ -32,7 +32,7 @@ RESET_BUTTON.addEventListener('click', reset);
 // Just add more buttons in HTML to allow classification of more classes of data!
 let dataCollectorButtons = document.querySelectorAll('.dataCollector');
 for (let i = 0; i < dataCollectorButtons.length; i++) {
-  dataCollectorButtons[i].addEventListener(''touchstart'', gatherDataForClass);
+  dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
   dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
   // For mobile.
   dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
@@ -190,7 +190,7 @@ async function trainAndPredict() {
   let results = await model.fit(inputsAsTensor, oneHotOutputs, {
     shuffle: true,
     batchSize: 5,
-    epochs: 10,
+    epochs: 30,
     callbacks: {onEpochEnd: logProgress}
   });
 
