@@ -119,7 +119,7 @@ function enableCam() {
         facingMode: 'user' // Use the front camera
   }
 }).then(function(stream) {
-      var video = document.querySelector('#camera');
+      var video = document.querySelector('webcam');
       video.srcObject = stream;
 }).catch(function(error) {
       console.log('Error accessing the camera: ', error);
