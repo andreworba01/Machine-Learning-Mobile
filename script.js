@@ -118,15 +118,15 @@ function enableCam() {
         video: {
           facingMode: 'user' // Use the front camera
         }
-      })
-      .then(function(stream) {
+      }).then(function(stream) {
         var video = document.getElementById('webcam');
         video.srcObject = stream;
-      })
-      .catch(function(error) {
+      }).catch(function(error) {
         console.log('Error accessing the camera: ', error);
       });
-  } else {
+  } 
+  
+  else {
     console.warn("getUserMedia() is not supported by your browser");
   }
 }
