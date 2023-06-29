@@ -106,19 +106,26 @@ function enableCam() {
   if (hasGetUserMedia()) {
     // getUsermedia parameters.
     const constraints = {
-      video: true,
-      width: 740,
-      height: 580,
-    };
+        video: {
+          facingMode: 'environment',
+          width: { ideal: window.innerWidth },
+          height: { ideal: window.innerHeight }
+        }
+      };
 
     // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
-      VIDEO.srcObject = stream;
-      VIDEO.addEventListener("loadeddata", function () {
-        videoPlaying = true;
-        ENABLE_CAM_BUTTON.classList.add('removed');
+    navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: 'environment' // Use the front camera
+        }
+      })
+      .then(function (stream) {
+        VIDEO.srcObject = stream;
+        VIDEO.addEventListener("loadeddata", function () {
+          videoPlaying = true;
+          ENABLE_CAM_BUTTON.classList.add('removed');
+        });
       });
-    });
   } else {
     console.warn("getUserMedia() is not supported by your browser");
   }
