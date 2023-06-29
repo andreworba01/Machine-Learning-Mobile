@@ -106,24 +106,30 @@ function enableCam() {
   if (hasGetUserMedia()) {
     // getUsermedia parameters.
     const constraints = {
-  video: {
-    facingMode: 'environment',
-    width: { ideal: window.innerWidth },
-    height: { ideal: window.innerHeight }
-  }
-};
+        video: {
+          facingMode: 'environment',
+          width: { ideal: window.innerWidth },
+          height: { ideal: window.innerHeight }
+        }
+      };
 
     // Activate the webcam stream.
     navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: 'user' // Use the front camera
+        video: {
+          facingMode: 'user' // Use the front camera
+        }
+      })
+      .then(function(stream) {
+        var video = document.getElementById('webcam');
+        video.srcObject = stream;
+      })
+      .catch(function(error) {
+        console.log('Error accessing the camera: ', error);
+      });
+  } else {
+    console.warn("getUserMedia() is not supported by your browser");
   }
-}).then(function(stream) {
-      var video = document.querySelector('webcam');
-      video.srcObject = stream;
-}).catch(function(error) {
-      console.log('Error accessing the camera: ', error);
-});
+}
 /**
  * Handle Data Gather for button mouseup/mousedown.
  **/
