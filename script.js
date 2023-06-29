@@ -66,16 +66,6 @@ async function loadMobileNetFeatureModel() {
     );
     console.log(answer.shape);
   });
-// Get a reference to the buttons
-let dataCollectorButtons = document.querySelectorAll('.gather');
-
-// Add event listeners to the buttons
-for (let i = 0; i < dataCollectorButtons.length; i++) {
-  dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
-  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
-  // For mobile.
-  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
-};
 }
 
 loadMobileNetFeatureModel();
@@ -116,20 +106,18 @@ function enableCam() {
   if (hasGetUserMedia()) {
     // getUsermedia parameters.
     const constraints = {
-      video: true,
-      width: 740,
-      height: 580,
-    };
-
-    // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia({video: {
-      facingMode: 'user' // Use the front camera
+        video: {
+          facingMode: 'environment',
+          width: { ideal: window.innerWidth },
+          height: { ideal: window.innerHeight }
         }
-      }).then(function(stream) {
-        var video = document.getElementById('webcam');
-        video.srcObject = stream;
-      }).catch(function(error) {
-      console.log('Error accessing the camera: ', error);
+      };
+    // Activate the webcam stream.
+    navigator.mediaDevices.getUserMedia(constrains).then(function (stream) {
+      VIDEO.srcObject = stream;
+      VIDEO.addEventListener("loadeddata", function () {
+        videoPlaying = true;
+        ENABLE_CAM_BUTTON.classList.add('removed');
       });
     });
   } else {
