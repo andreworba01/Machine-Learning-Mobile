@@ -24,15 +24,15 @@ const MOBILE_NET_INPUT_HEIGHT = 224;
 const STOP_DATA_GATHER = -1;
 const CLASS_NAMES = [];
 
-ENABLE_CAM_BUTTON.addEventListener("click", enableCam);
-TRAIN_BUTTON.addEventListener('click', trainAndPredict);
-RESET_BUTTON.addEventListener('click', reset);
+ENABLE_CAM_BUTTON.addEventListener(""touchstart"", enableCam);
+TRAIN_BUTTON.addEventListener('"touchstart"', trainAndPredict);
+RESET_BUTTON.addEventListener('"touchstart"', reset);
 
 
 // Just add more buttons in HTML to allow classification of more classes of data!
 let dataCollectorButtons = document.querySelectorAll('.dataCollector');
 for (let i = 0; i < dataCollectorButtons.length; i++) {
-  dataCollectorButtons[i].addEventListener('mousedown', gatherDataForClass);
+  dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
   dataCollectorButtons[i].addEventListener('mouseup', gatherDataForClass);
   // For mobile.
   dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
