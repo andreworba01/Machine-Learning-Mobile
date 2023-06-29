@@ -24,16 +24,16 @@ const MOBILE_NET_INPUT_HEIGHT = 224;
 const STOP_DATA_GATHER = -1;
 const CLASS_NAMES = [];
 
-ENABLE_CAM_BUTTON.addEventListener(""touchstart"", enableCam);
-TRAIN_BUTTON.addEventListener('"touchstart"', trainAndPredict);
-RESET_BUTTON.addEventListener('"touchstart"', reset);
+ENABLE_CAM_BUTTON.addEventListener("click", enableCam);
+TRAIN_BUTTON.addEventListener('click', trainAndPredict);
+RESET_BUTTON.addEventListener('click', reset);
 
 
 // Just add more buttons in HTML to allow classification of more classes of data!
 let dataCollectorButtons = document.querySelectorAll('.dataCollector');
 for (let i = 0; i < dataCollectorButtons.length; i++) {
-  dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
-  dataCollectorButtons[i].addEventListener('mouseup', gatherDataForClass);
+  dataCollectorButtons[i].addEventListener(''touchstart'', gatherDataForClass);
+  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
   // For mobile.
   dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
 
@@ -127,6 +127,7 @@ function enableCam() {
  * Handle Data Gather for button mouseup/mousedown.
  **/
 function gatherDataForClass() {
+  event.preventDefault();
   let classNumber = parseInt(this.getAttribute('data-1hot'));
   gatherDataState = (gatherDataState === STOP_DATA_GATHER) ? classNumber : STOP_DATA_GATHER;
   dataGatherLoop();
@@ -189,7 +190,7 @@ async function trainAndPredict() {
   let results = await model.fit(inputsAsTensor, oneHotOutputs, {
     shuffle: true,
     batchSize: 5,
-    epochs: 30,
+    epochs: 10,
     callbacks: {onEpochEnd: logProgress}
   });
 
