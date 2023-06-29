@@ -114,17 +114,16 @@ function enableCam() {
 };
 
     // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
-      VIDEO.srcObject = stream;
-      VIDEO.addEventListener("loadeddata", function () {
-        videoPlaying = true;
-        ENABLE_CAM_BUTTON.classList.add('removed');
-      });
-    });
-  } else {
-    console.warn("getUserMedia() is not supported by your browser");
+    navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: 'user' // Use the front camera
   }
-}
+}).then(function(stream) {
+      var video = document.querySelector('#camera');
+      video.srcObject = stream;
+}).catch(function(error) {
+      console.log('Error accessing the camera: ', error);
+});
 /**
  * Handle Data Gather for button mouseup/mousedown.
  **/
