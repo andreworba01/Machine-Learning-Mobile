@@ -93,3 +93,8 @@ button {
 
 #status { font-size:75%;
 }
+.video-container {
+  position: fixed;
+  z-index: 9999;
+  cursor: move;
+}
