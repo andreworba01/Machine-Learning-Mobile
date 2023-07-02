@@ -22,6 +22,34 @@
           <div id="videoContainer" class="video-container">
           <video id="webcam" muted playsinline autoplay></video>
             </div> 
+          <script>
+            // JavaScript code
+            const videoContainer = document.getElementById("videoContainer");
+            let isDragging = false;
+            let dragOffsetX = 0;
+            let dragOffsetY = 0;
+            
+            videoContainer.addEventListener("touchstart", startDrag);
+            videoContainer.addEventListener("touchmove", drag);
+            videoContainer.addEventListener("touchend", endDrag);
+            
+            function startDrag(event) {
+              isDragging = true;
+              dragOffsetX = event.touches[0].clientX - videoContainer.offsetLeft;
+              dragOffsetY = event.touches[0].clientY - videoContainer.offsetTop;
+            }
+            function drag(event) {
+              if (isDragging) {
+                const x = event.touches[0].clientX - dragOffsetX;
+                const y = event.touches[0].clientY - dragOffsetY;
+                videoContainer.style.left = `${x}px`;
+                videoContainer.style.top = `${y}px`;
+              }
+            }
+            function endDrag() {
+              isDragging = false;
+            }
+          </script>
         </th>
       </tr>
       <tr>
