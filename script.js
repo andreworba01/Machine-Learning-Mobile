@@ -79,11 +79,11 @@ model.add(
 );
 
 model.summary();
-
+const optimizer = tf.train.RMSProp(0.001); // Adjust the learning rate as needed.
 // Compile the model with the defined optimizer and specify a loss function to use.
 model.compile({
-  // Adam changes the learning rate over time which is useful.
-const optimizer = tf.train.RMSProp(0.001); // Adjust the learning rate as needed.
+  // Adam changes the learning rate over time which is useful
+  optimizer: optimizer, // Adjust the learning rate as needed.
   // Use the correct loss function. If 2 classes of data, must use binaryCrossentropy.
   // Else categoricalCrossentropy is used if more than 2 classes.
   loss:
