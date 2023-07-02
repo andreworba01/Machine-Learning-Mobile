@@ -4,16 +4,15 @@ body {
     margin: 2em;
   }
 video {
-    clear: both;
-    display: block;
-    margin: center;
-    background: #000000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    cursor: move;
-  }
+  clear: both;
+  display: block;
+  margin: 0 auto;
+  background: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
 button {
     --offset: 10px;
     --border-size: 2px;
