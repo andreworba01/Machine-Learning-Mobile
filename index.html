@@ -52,70 +52,35 @@
           </script>
         </th>
       </tr>
-    <tr>
-      <td style="text-align:left;">
-        <button id="enableCam" class="button">
+    </table>
+  <button id="enableCam" class="button">
           Enable Webcam
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <ul style="list-style-type:square; margin: 0; padding: 0;">
+  </button>
+    <ul style="list-style-type:square; margin: 0; padding: 0;">
           <li>First, enable the webcam and allow access when prompted.</li>
           <li>Next, find an object and point the camera at it. Click and hold the "Gather class 1 data" button to collect at least 30 samples.</li>
         </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">
-        <button class="dataCollector" data-1hot="0" data-name="Class 1">
+    <button class="dataCollector" data-1hot="0" data-name="Class 1">
           Gather Class 1
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">
-        <ul style="list-style-type:square; margin: 0; padding: 0;">
+      <ul style="list-style-type:square; margin: 0; padding: 0;">
           <li>Repeat the process for class 2 using a different object of interest. Collect a similar number of samples.</li>
           <li>Click the "Train & Predict" button and wait for the model to train live in your browser. This may take about 1 minute.</li>
         </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">
-        <button class="dataCollector" data-1hot="1" data-name="Class 2">
+      <button class="dataCollector" data-1hot="1" data-name="Class 2">
           Gather Class 2
         </button>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">
-        <button id="train" class="button">
+      <button id="train" class="button">
           Train &amp; Predict
         </button>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">
-        <ul style="list-style-type:square; margin: 0; padding: 0;">
+      <ul style="list-style-type:square; margin: 0; padding: 0;">
           <li>Once trained, you will see live predictions appear above the video for what it thinks it sees.</li>
         </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left;">
-        <button id="reset" class="button" style="background-color:rgb(182, 182, 182)">
+      <button id="reset" class="button" style="background-color:rgb(182, 182, 182)">
           Reset
         </button>
-      </td>
-    </tr>
-    <tr>
       <td id="status" style="color:#c40928; font-size:20px; margin: 0; font-weight:bolder; text-transform:uppercase; font-family:'Courier New', Courier, monospace;">
         Awaiting Model to Load
       </td>
-    </tr>
-  </table>
 
     <!-- Import the page's JavaScript to do some stuff -->
     <script type="module" src="script.js"></script>
