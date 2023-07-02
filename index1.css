@@ -97,12 +97,13 @@ button {
 }
 .video-container{
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      max-width: 560px; /* Adjust the width as needed */
-      height: calc(100vw * 0.5625); /* Maintain a 16:9 aspect ratio (9 / 16 = 0.5625) */
-      max-height: calc(100vh - 20px); /* Adjust the height as needed */
+      top: 20px;
+      right: 20px;
+      width: 20%;
+      max-width: 560px; /* Adjust the maximum width as needed */
+      height: calc(20vw * 0.5625); /* Maintain a 16:9 aspect ratio (9 / 16 = 0.5625) */
+      max-height: calc(20vh - 40px); /* Adjust the maximum height as needed */
       overflow: hidden;
+      resize: both;
+      aspect-ratio: 16 / 9;
     }
