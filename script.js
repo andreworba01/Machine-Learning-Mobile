@@ -73,8 +73,10 @@ async function loadMobileNetFeatureModel() {
 loadMobileNetFeatureModel();
 
 let model = tf.sequential();
+model.add(tf.layers.flatten());
 model.add(
-  tf.layers.dense({ units: 256, activation: "relu" }));
+  tf.layers.dense({ inputShape: [1024], units: 64, activation: "relu" })
+);
 model.add(
   tf.layers.dropout({ rate: 0.5 }));
 model.add(
@@ -82,7 +84,7 @@ model.add(
 );
 
 model.summary();
-const optimizer = tf.train.RMSProp(0.001); // Adjust the learning rate as needed.
+const optimizer = tf.train.RMSProp(0.01); // Adjust the learning rate as needed.
 // Compile the model with the defined optimizer and specify a loss function to use.
 model.compile({
   // Adam changes the learning rate over time which is useful
@@ -198,8 +200,8 @@ async function trainAndPredict() {
 
   let results = await model.fit(inputsAsTensor, oneHotOutputs, {
     shuffle: true,
-    batchSize: 2,
-    epochs: 10,
+    batchSize: 1,
+    epochs: 8,
     callbacks: {onEpochEnd: logProgress}
   });
 
