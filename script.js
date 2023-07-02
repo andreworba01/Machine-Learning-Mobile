@@ -32,7 +32,11 @@ RESET_BUTTON.addEventListener('click', reset);
 // Just add more buttons in HTML to allow classification of more classes of data!
 let dataCollectorButtons = document.querySelectorAll('.dataCollector');
 for (let i = 0; i < dataCollectorButtons.length; i++) {
-  dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
+  dataCollectorButtons[i].addEventListener('touchstart', function(event) {
+    event.preventDefault(); // Prevent copy and paste option
+    gatherDataForClass(event);
+  });
+
   // Populate the human readable names for classes.
   CLASS_NAMES.push(dataCollectorButtons[i].getAttribute('data-name'));
 }
