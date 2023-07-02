@@ -45,15 +45,9 @@ let trainingDataInputs = [];
 let trainingDataOutputs = [];
 let examplesCount = [];
 let predict = false;
-
-
 /**
  * Loads the MobileNet model and warms it up so ready for use.
  **/
-
-/**
-* Loads the MobileNet model and warms it up so ready for use.
-**/
 
 async function loadMobileNetFeatureModel() {
   const URL =
@@ -73,19 +67,19 @@ async function loadMobileNetFeatureModel() {
 loadMobileNetFeatureModel();
 
 let model = tf.sequential();
-model.add(tf.layers.flatten());
 model.add(
-  tf.layers.dense({ inputShape: [1024], units: 64, activation: "relu" })
+  tf.layers.dense({ inputShape: [1024], units: 128, activation: "relu" })
 );
 model.add(
   tf.layers.dense({ units: CLASS_NAMES.length, activation: "softmax" })
 );
 
 model.summary();
+
 // Compile the model with the defined optimizer and specify a loss function to use.
 model.compile({
-  // Adam changes the learning rate over time which is useful
-  optimizer: "adam", // Adjust the learning rate as needed.
+  // Adam changes the learning rate over time which is useful.
+  optimizer: "adam",
   // Use the correct loss function. If 2 classes of data, must use binaryCrossentropy.
   // Else categoricalCrossentropy is used if more than 2 classes.
   loss:
