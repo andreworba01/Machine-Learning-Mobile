@@ -33,13 +33,10 @@ RESET_BUTTON.addEventListener('click', reset);
 let dataCollectorButtons = document.querySelectorAll('.dataCollector');
 for (let i = 0; i < dataCollectorButtons.length; i++) {
   dataCollectorButtons[i].addEventListener('touchstart', gatherDataForClass);
-  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
-  // For mobile.
-  dataCollectorButtons[i].addEventListener('touchend', gatherDataForClass);
-
   // Populate the human readable names for classes.
   CLASS_NAMES.push(dataCollectorButtons[i].getAttribute('data-name'));
 }
+
 
 let videoPlaying = false;
 let mobilenet = undefined;
