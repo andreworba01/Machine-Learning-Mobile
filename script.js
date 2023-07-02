@@ -68,10 +68,10 @@ loadMobileNetFeatureModel();
 
 let model = tf.sequential();
 model.add(
-  tf.layers.dense({ inputShape: [1024], units: 128, activation: "relu" })
+  tf.layers.dense({ inputShape: [1024], units: 64, activation: "relu" })
 );
 model.add(
-  tf.layers.dense({ units: CLASS_NAMES.length, activation: "softmax" })
+  tf.layers.dense({ units: CLASS_NAMES.length, activation: "sigmoid" })
 );
 
 model.summary();
@@ -191,7 +191,7 @@ async function trainAndPredict() {
 
   let results = await model.fit(inputsAsTensor, oneHotOutputs, {
     shuffle: true,
-    batchSize: 1,
+    batchSize: 3,
     epochs: 8,
     callbacks: {onEpochEnd: logProgress}
   });
