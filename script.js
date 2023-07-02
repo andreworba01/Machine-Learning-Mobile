@@ -73,9 +73,6 @@ loadMobileNetFeatureModel();
 
 let model = tf.sequential();
 model.add(
-  tf.layers.dense({ inputShape: [1024], units: 128, activation: "relu" })
-);
-model.add(
   tf.layers.dense({ units: 256, activation: "relu" }),
   tf.layers.dropout({ rate: 0.5 }),
   tf.layers.dense({ units: CLASS_NAMES.length, activation: "softmax" })
