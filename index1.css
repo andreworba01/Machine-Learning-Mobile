@@ -91,9 +91,9 @@ button {
       position: fixed;
       top: 20px;
       right: 20px;
-      width: 120%;
+      width: 90%;
       max-width: 860px; /* Adjust the maximum width as needed */
-      height: calc(40vw * 0.5625); /* Maintain a 16:9 aspect ratio (9 / 16 = 0.5625) */
+      height: calc(40vw * 0.7625); /* Maintain a 16:9 aspect ratio (9 / 16 = 0.5625) */
       max-height: calc(40vh - 40px); /* Adjust the maximum height as needed */
       overflow: hidden;
       resize: both;
