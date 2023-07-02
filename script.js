@@ -195,8 +195,8 @@ async function trainAndPredict() {
 
   let results = await model.fit(inputsAsTensor, oneHotOutputs, {
     shuffle: true,
-    batchSize: 5,
-    epochs: 30,
+    batchSize: 2,
+    epochs: 10,
     callbacks: {onEpochEnd: logProgress}
   });
 
