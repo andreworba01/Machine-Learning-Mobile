@@ -250,32 +250,3 @@ function reset() {
   
   console.log('Tensors in memory: ' + tf.memory().numTensors);
 }
-
-// JavaScript code
-const videoContainer = document.getElementById("videoContainer");
-let isDragging = false;
-let dragOffsetX = 0;
-let dragOffsetY = 0;
-
-videoContainer.addEventListener("touchstart", startDrag);
-videoContainer.addEventListener("touchmove", drag);
-videoContainer.addEventListener("touchend", endDrag);
-
-function startDrag(event) {
-  isDragging = true;
-  dragOffsetX = event.clientX - videoContainer.offsetLeft;
-  dragOffsetY = event.clientY - videoContainer.offsetTop;
-}
-
-function drag(event) {
-  if (isDragging) {
-    const x = event.clientX - dragOffsetX;
-    const y = event.clientY - dragOffsetY;
-    videoContainer.style.left = `${x}px`;
-    videoContainer.style.top = `${y}px`;
-  }
-}
-
-function endDrag() {
-  isDragging = false;
-}
