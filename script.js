@@ -25,7 +25,7 @@ const STOP_DATA_GATHER = -1;
 const CLASS_NAMES = [];
 
 ENABLE_CAM_BUTTON.addEventListener("click", enableCam);
-TRAIN_BUTTON.addEventListener('click', trainAndPredict);
+TRAIN_BUTTON.addEventListener('touchstart', trainAndPredict);
 RESET_BUTTON.addEventListener('click', reset);
 
 
