@@ -58,14 +58,16 @@
   </button>
 <ul style="list-style-type:square; margin: 0; padding: 0;">
           <li>First, enable the webcam and allow access when prompted.</li>
-          <li>Next, find an object and point the camera at it. Click and hold the "Gather class 1 data" button to collect at least 30 samples.</li>
+          <li>Next, find an object and point the camera at it. Press the "Gather class 1 data" button once to initiate the data collection process. 
+            Keep the camera steady and collect approximately 50 samples. Once you have gathered the desired number of samples, 
+            press the "Gather class 1 data" button again to conclude the data gathering process.</li>
         </ul>
 <button class="dataCollector" data-1hot="0" data-name="Class 1">
           Gather Class 1
     </button>
 <ul style="list-style-type:square; margin: 0; padding: 0;">
           <li>Repeat the process for class 2 using a different object of interest. Collect a similar number of samples.</li>
-          <li>Click the "Train & Predict" button and wait for the model to train live in your browser. This may take about 1 minute.</li>
+          <li>Click the "Train & Predict" button and wait for the model to train live in your browser. This may take around 1 minute.</li>
 </ul>
 <button class="dataCollector" data-1hot="1" data-name="Class 2">
           Gather Class 2
@@ -74,7 +76,7 @@
           Train &amp; Predict
 </button>
 <ul style="list-style-type:square; margin: 0; padding: 0;">
-          <li>Once trained, you will see live predictions appear above the video for what it thinks it sees.</li>
+          <li>Once trained, you will see live predictions appear at the bottom of the page for what it thinks it sees.</li>
 </ul>
 <button id="reset" class="button" style="background-color:rgb(182, 182, 182)">
           Reset
