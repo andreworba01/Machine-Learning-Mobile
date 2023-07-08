@@ -40,7 +40,7 @@ for (let i = 0; i < dataCollectorButtons.length; i++) {
 
 let videoPlaying = false;
 let mobilenet = undefined;
-let gatherDataState = STOP_DATA_GATHER;
+let gatherDataState = _DATA_GATHER;
 let trainingDataInputs = [];
 let trainingDataOutputs = [];
 let examplesCount = [];
@@ -133,6 +133,7 @@ function dataGatherLoop() {
   if (videoPlaying && gatherDataState !== STOP_DATA_GATHER) {
     if (trainingDataInputs.length < STOP_DATA_GATHER) {
       // Rest of the code remains the same
+      window.requestAnimationFrame(dataGatherLoop);
     } else {
       gatherDataState = STOP_DATA_GATHER;
       // Stop gathering data
