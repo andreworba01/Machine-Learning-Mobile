@@ -21,7 +21,7 @@ const RESET_BUTTON = document.getElementById("reset");
 const TRAIN_BUTTON = document.getElementById("train");
 const MOBILE_NET_INPUT_WIDTH = 224;
 const MOBILE_NET_INPUT_HEIGHT = 224;
-const STOP_DATA_GATHER = -1;
+const STOP_DATA_GATHER = 60;
 const CLASS_NAMES = [];
 
 ENABLE_CAM_BUTTON.addEventListener("click", enableCam);
@@ -129,10 +129,15 @@ function enableCam() {
 /**
  * Handle Data Gather for button mouseup/mousedown.
  **/
-function gatherDataForClass() {
-  let classNumber = parseInt(this.getAttribute('data-1hot'));
-  gatherDataState = (gatherDataState === STOP_DATA_GATHER) ? classNumber : STOP_DATA_GATHER;
-  dataGatherLoop();
+function dataGatherLoop() {
+  if (videoPlaying && gatherDataState !== STOP_DATA_GATHER) {
+    if (trainingDataInputs.length < STOP_DATA_GATHER) {
+      // Rest of the code remains the same
+    } else {
+      gatherDataState = STOP_DATA_GATHER;
+      // Stop gathering data
+    }
+  }
 }
 
 function calculateFeaturesOnCurrentFrame() {
