@@ -130,6 +130,7 @@ function enableCam() {
  * Handle Data Gather for button mouseup/mousedown.
  **/
 function gatherDataForClass() {
+  event.preventDefault();
   let classNumber = parseInt(this.getAttribute('data-1hot'));
   gatherDataState = (gatherDataState === STOP_DATA_GATHER) ? classNumber : STOP_DATA_GATHER;
   dataGatherLoop();
