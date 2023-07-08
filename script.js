@@ -40,7 +40,7 @@ for (let i = 0; i < dataCollectorButtons.length; i++) {
 
 let videoPlaying = false;
 let mobilenet = undefined;
-let gatherDataState = _DATA_GATHER;
+let gatherDataState = STOP_DATA_GATHER;
 let trainingDataInputs = [];
 let trainingDataOutputs = [];
 let examplesCount = [];
@@ -129,7 +129,6 @@ function enableCam() {
 /**
  * Handle Data Gather for button mouseup/mousedown.
  **/
-function dataGatherLoop() {
 function gatherDataForClass() {
   let classNumber = parseInt(this.getAttribute('data-1hot'));
   gatherDataState = (gatherDataState === STOP_DATA_GATHER) ? classNumber : STOP_DATA_GATHER;
